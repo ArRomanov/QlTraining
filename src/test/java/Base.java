@@ -1,8 +1,9 @@
 import factories.PagesFactories;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 
+@Listeners(TestListener.class)
 public class Base {
 
     public PagesFactories pages;
@@ -13,7 +14,7 @@ public class Base {
     }
 
     @AfterClass
-    public void closeBrowser() {
-        pages.destroyDriver();
+    public void tearDown() {
+        pages.destroyInstance();
     }
 }

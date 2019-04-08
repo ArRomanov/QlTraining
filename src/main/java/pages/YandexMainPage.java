@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class YandexMainPage extends AbstractPage {
@@ -13,17 +14,20 @@ public class YandexMainPage extends AbstractPage {
         super(driver);
     }
 
+    @Step("Открываем главную страницу Yandex")
     public YandexMainPage openYandex() {
         driver.get(YANDEX_URL);
         this.waitUntilElementIsVisible(YANDEX_MAIN_LOGO, 5);
         return this;
     }
 
+    @Step("Проверяем, что находимся на главной странице Yandex")
     public YandexMainPage assertIsMainYandexPage() {
         this.checkTitle("Яндекс");
         return this;
     }
 
+    @Step("Выполняем поиск по запросу '{searchQuery}'")
     public YandexResultsPage performSearch(String searchQuery) {
         this
                 .waitUntilElementIsVisible(SEARCHING_START_BUTTON, 3)

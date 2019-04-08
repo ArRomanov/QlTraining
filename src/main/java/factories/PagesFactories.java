@@ -1,9 +1,17 @@
 package factories;
 
+import com.google.common.io.Files;
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import pages.HabrMainPage;
 import pages.YandexMainPage;
 import pages.YandexResultsPage;
+
+import java.io.File;
+import java.io.IOException;
 
 public class PagesFactories {
 
@@ -27,7 +35,14 @@ public class PagesFactories {
         }
     }
 
-    public void destroyDriver() {
+    @Attachment(value = "SCREENSHOT", type = "image/png")
+    public byte[] attachScreenshot() throws IOException {
+        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        return Files.toByteArray(screenshot);
+    }
+
+    @Step("Закрываем браузер")
+    public void destroyInstance() {
         driver.quit();
     }
 
