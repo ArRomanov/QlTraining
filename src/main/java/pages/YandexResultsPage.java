@@ -1,12 +1,14 @@
+package pages;
+
 import org.openqa.selenium.WebDriver;
 
-public class ResultsListPage extends AbstractPage {
+public class YandexResultsPage extends AbstractPage {
 
-    private static String SEARCH_RESULTS_LIST = "//div[@class='serp-list']";
-    private static String ONE_OF_LINK_FROM_RESULT_LIST = "//li[@class='serp-item'][%s]//a[contains(@class,'link_cropped_no')]";
-    private static String RESULTS_WAS_FOUND_FLAG = "//div[@class='serp-adv__found']";
+    private static final String SEARCH_RESULTS_LIST = "//div[@class='serp-list']";
+    private static final String ONE_OF_LINK_FROM_RESULT_LIST = "//li[@class='serp-item'][%s]//a[contains(@class,'link_cropped_no')]";
+    private static final String RESULTS_WAS_FOUND_FLAG = "//div[@class='serp-adv__found']";
 
-    public ResultsListPage(WebDriver driver) {
+    public YandexResultsPage(WebDriver driver) {
         super(driver);
     }
 

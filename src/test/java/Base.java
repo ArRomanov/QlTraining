@@ -1,19 +1,19 @@
-import factories.WebDriverFactory;
+import factories.PagesFactories;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 public class Base {
 
-    public WebDriver driver;
+    public PagesFactories pages;
 
     @BeforeClass
-    public void initDriver() {
-        driver = WebDriverFactory.getSimpleWebdriver();
+    public void initDriver() throws PagesFactories.WrongBrowserException {
+        pages = new PagesFactories("chrome");
     }
 
     @AfterClass
     public void closeBrowser() {
-        driver.quit();
+        pages.destroyDriver();
     }
 }
