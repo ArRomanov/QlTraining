@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class YandexResultsPage extends AbstractPage {
@@ -12,6 +13,7 @@ public class YandexResultsPage extends AbstractPage {
         super(driver);
     }
 
+    @Step("Открываем {numOfLink} ссылку из списка результатов")
     public void openLinkAndSwitchToIt(String numOfLink) {
         this
                 .waitUntilElementIsVisible(SEARCH_RESULTS_LIST, 5)
@@ -19,6 +21,7 @@ public class YandexResultsPage extends AbstractPage {
                 .switchToOtherTab();
     }
 
+    @Step("Проверяем, что находимся на странице результатов поиска")
     public void assertIsResultListPage() {
         this.checkDisplayedOfElement(RESULTS_WAS_FOUND_FLAG);
     }

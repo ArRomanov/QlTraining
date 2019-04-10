@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class HabrMainPage extends AbstractPage {
@@ -11,6 +12,7 @@ public class HabrMainPage extends AbstractPage {
         super(driver);
     }
 
+    @Step("Проверяем, что находимся на странице хабра")
     public HabrMainPage assertIsHabrMainPage() {
         this
                 .waitUntilElementIsVisible(HABR_MAIN_LOGO, 5)
@@ -18,6 +20,7 @@ public class HabrMainPage extends AbstractPage {
         return this;
     }
 
+    @Step("Возвращаемся на страницу с результатами поиска")
     public YandexResultsPage reurnToSearchResultPage() {
         this.switchToOtherTab();
         return new YandexResultsPage(driver);
